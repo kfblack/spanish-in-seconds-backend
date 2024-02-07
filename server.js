@@ -5,8 +5,8 @@ require('dotenv').config()
 require('./config/db.connection.js');
 
 const AuthRouter = require('./routes/AuthRouter')
-
 const lessonRouter = require('./routes/lessons')
+const quizzesRouter = require('./routes/quizzes')
 
 const { PORT } = process.env;
 
@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: true}))
 
 app.use('/auth', AuthRouter);
 app.use('/lessons', lessonRouter)
+app.use('/quizzes', quizzesRouter)
 
 app.get('/', (req, res) => {
     res.send('hello world');
