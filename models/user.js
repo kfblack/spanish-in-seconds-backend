@@ -7,7 +7,6 @@ const userSchema = new Schema ({
     email: String,
     passwordDigest: String,
     avatar: String,
-    timestamps: true,
     lessons: [{
         type: Schema.Types.ObjectId,
         ref: 'Lesson'
@@ -15,8 +14,8 @@ const userSchema = new Schema ({
     progress: [{
         type: Schema.Types.ObjectId,
         ref: 'Progress'
-    }]
-})
+    }],
+}, {timestamps: true})
 
 
 module.exports = mongoose.model("User", userSchema)
