@@ -3,7 +3,12 @@ const Schema = mongoose.Schema;
 
 
 const quizAnswerSchema = new Schema ({
-
+    content: String,
+    isCorrect: Boolean,
+    questions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Quiz Question'
+    }]
 })
 
 
