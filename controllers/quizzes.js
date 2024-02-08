@@ -9,6 +9,14 @@ async function create (req, res, next) {
     }
 }
 
+async function index (req, res, next) {
+    try {
+        res.json(await Quiz.find({}))
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
 async function show (req, res, next) {
     try {
         res.json(await Quiz.findById(req.params.id));
@@ -37,5 +45,6 @@ module.exports = {
     create,
     show,
     update,
-    delete: destroy
+    delete: destroy,
+    index
 }
