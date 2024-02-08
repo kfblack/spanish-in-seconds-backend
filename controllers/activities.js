@@ -9,6 +9,14 @@ async function create (req, res, next) {
     }
 }
 
+async function index (req, res, next) {
+    try {
+        res.json(await LessonActivity.find({}))
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
 async function alter (req, res, next) {
     try {
         let activity = await LessonActivity.findById(req.params.id);
@@ -49,5 +57,6 @@ module.exports = {
     show,
     update,
     delete: destroy,
-    alter
+    alter, 
+    index
 }
