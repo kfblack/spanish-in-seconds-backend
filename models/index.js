@@ -1,5 +1,5 @@
 module.exports = {
-    User: require('./User'),
+    User: require('./ser'),
     Lesson: require('./lesson'),
     LessonActivity: require('./lessonActivity'),
     ActivityAnswer: require('./lessonActivityAnswer'),
