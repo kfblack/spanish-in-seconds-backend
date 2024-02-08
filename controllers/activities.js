@@ -1,9 +1,13 @@
 const express = require('express');
 const { LessonActivity } = require('../models');
+const { Lesson } = require('../models');
 
 async function create (req, res, next) {
     try {
-        res.json(await LessonActivity.create(req.body))
+        const newActivity = await LessonActivity.create(req.body)
+        const lessonId = req.body.lessonId;
+        await Lesson.findByIdAndUpdate(lessonId, {$push: {activities: newActivity._id }})
+        res.json(newActivity);
     } catch (err) {
         res.status(400).json(err);
     }
