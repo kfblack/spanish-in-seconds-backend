@@ -8,6 +8,7 @@ const AuthRouter = require('./routes/AuthRouter')
 const lessonRouter = require('./routes/lessons')
 const quizzesRouter = require('./routes/quizzes')
 const activitiesRouter = require('./routes/activities')
+const activityAnswerRouter = require('./routes/activityAnswer')
 
 const { PORT } = process.env;
 
@@ -25,6 +26,7 @@ app.use('/auth', AuthRouter);
 app.use('/lessons', lessonRouter)
 app.use('/quizzes', quizzesRouter)
 app.use('/activities', activitiesRouter);
+app.use('/activityAnswer', activityAnswerRouter);
 
 app.get('/', (req, res) => {
     res.send('hello world');
