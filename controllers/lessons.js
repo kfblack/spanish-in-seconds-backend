@@ -10,6 +10,14 @@ async function create (req, res, next) {
     }
 }
 
+async function index (req, res, next) {
+    try {
+        res.json(await Lesson.find({}))
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
 async function alter (req, res, next) {
     try {
         let lesson = await Lesson.findById(req.params.id);
@@ -51,5 +59,6 @@ module.exports = {
     show,
     update,
     delete: destroy, 
-    alter
+    alter,
+    index
 }
