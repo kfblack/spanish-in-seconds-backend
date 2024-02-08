@@ -6,5 +6,6 @@ router.post('/', lessonsCtrl.create);
 router.delete('/:id', lessonsCtrl.delete);
 router.put('/:id', lessonsCtrl.update);
 router.get('/:id', lessonsCtrl.show);
+router.put('/:id/activity/:actId', lessonsCtrl.alter)
 
 module.exports = router;

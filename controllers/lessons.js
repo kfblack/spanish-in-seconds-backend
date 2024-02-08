@@ -10,9 +10,20 @@ async function create (req, res, next) {
     }
 }
 
+async function alter (req, res, next) {
+    try {
+        let lesson = await Lesson.findById(req.params.id);
+        lesson.activities.push(req.params.actId);
+        lesson.save();
+        res.json(lesson)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
 async function show (req, res, next) {
     try {
-        res.json(await Lesson.findById(req.params.id));
+        res.json(await Lesson.findById(req.params.id).populate("activities"));
     } catch (err) {
         res.status(400).json(err);
     }
@@ -38,5 +49,6 @@ module.exports = {
     create,
     show,
     update,
-    delete: destroy
+    delete: destroy, 
+    alter
 }
