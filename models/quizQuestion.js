@@ -4,11 +4,8 @@ const Schema = mongoose.Schema;
 
 const quizQuestionSchema = new Schema ({
     content: String,
-    questionType: String,
-    answers: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Quiz Answer'
-    }]
+    correctAnswer: String,
+    possibleAnswers: [String]
 })
 
 

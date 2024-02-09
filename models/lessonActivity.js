@@ -3,12 +3,13 @@ const Schema = mongoose.Schema;
 
 
 const lessonActivitySchema = new Schema ({
-    questionType: String,
+    description: String,
     content: String,
-    activityAnswer: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Activity Answer'
-    }]
+    correctAnswer: String,
+    activityType: {
+        type: String,
+        enum: ['multiple-choice', 'fill-in-the-blank', 'true-false', 'short-answer']
+    }   
 })
 
 
