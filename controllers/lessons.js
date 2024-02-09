@@ -22,6 +22,16 @@ async function alter (req, res, next) {
     try {
         let lesson = await Lesson.findById(req.params.id);
         lesson.activities.push(req.params.actId);
+        lesson.save();
+        res.json(lesson)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
+async function change (req, res, next) {
+    try {
+        let lesson = await Lesson.findById(req.params.id);
         lesson.quiz.push(req.params.quizId);
         lesson.save();
         res.json(lesson)
@@ -60,5 +70,6 @@ module.exports = {
     update,
     delete: destroy, 
     alter,
-    index
+    index, 
+    change
 }
