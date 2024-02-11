@@ -10,16 +10,6 @@ async function create (req, res, next) {
     }
 }
 
-async function alter (req, res, next) {
-    try {
-        let question = await QuizQuestion.findById(req.params.id);
-        question.answers.push(req.params.quizAnswerId);
-        question.save();
-        res.json(question)
-    } catch (err) {
-        res.status(400).json(err)
-    }
-}
 
 async function show (req, res, next) {
     try {
@@ -50,5 +40,4 @@ module.exports = {
     show,
     update,
     delete: destroy, 
-    alter
 }
