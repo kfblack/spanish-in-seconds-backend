@@ -11,7 +11,7 @@ async function create (req, res, next) {
 
 async function index (req, res, next) {
     try {
-        res.json(await Quiz.find({}))
+        res.json(await Quiz.find({}).populate('questions'))
     } catch (err) {
         res.status(400).json(err);
     }
