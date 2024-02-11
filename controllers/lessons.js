@@ -12,7 +12,7 @@ async function create (req, res, next) {
 
 async function index (req, res, next) {
     try {
-        res.json(await Lesson.find({}).populate('activities').populate('quiz'))
+        res.json(await Lesson.find({}).populate('activities').populate({path: 'quiz', populate: {path: 'questions'} }))
     } catch (err) {
         res.status(400).json(err);
     }
