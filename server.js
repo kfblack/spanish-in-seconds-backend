@@ -9,6 +9,7 @@ const lessonRouter = require('./routes/lessons')
 const quizzesRouter = require('./routes/quizzes')
 const activitiesRouter = require('./routes/activities')
 const quizQuestionRouter = require('./routes/quizQuestion');
+const progressRouter = require('./routes/progress')
 
 const { PORT } = process.env;
 
@@ -27,6 +28,7 @@ app.use('/lessons', lessonRouter)
 app.use('/quizzes', quizzesRouter)
 app.use('/activities', activitiesRouter);
 app.use('/quizQuestion', quizQuestionRouter);
+app.use('/progress', progressRouter)
 
 app.get('/', (req, res) => {
     res.send('hello world');
