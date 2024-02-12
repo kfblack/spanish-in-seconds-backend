@@ -28,7 +28,10 @@ async function show (req, res, next) {
 
 async function update (req, res, next) {
     try {
-        res.json(await Progress.findByIdAndUpdate(req.params.id, req.body, {new:true}))
+        let progress = await Progress.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        progress.lesson.push(req.params.lessonId);
+        progress.save();
+        res.json(progress)
     } catch (err) { 
         res.status(400).json(err);
     }  
