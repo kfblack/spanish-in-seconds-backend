@@ -13,7 +13,7 @@ const userSchema = new Schema ({
     }],
     progress: [{
         type: Schema.Types.ObjectId,
-        ref: 'Progress'
+        ref: 'Lesson'
     }],
 }, {timestamps: true})
 

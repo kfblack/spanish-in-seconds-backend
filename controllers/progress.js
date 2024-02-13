@@ -7,20 +7,9 @@ async function create(req, res) {
 
     try {
         const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        const progress = new Progress({
-            user: userId,
-            lesson: lessonId,
-            dateComplete: new Date()
-        });
-        await progress.save();
-        await User.findByIdAndUpdate(userId, {
-            $push: { progress: progress._id }
-        }, { new: true });
-
-        res.json({ message: "Lesson marked as complete!", progress });
+        user.progress.push(lessonId)
+        user.save()
+        res.json({ message: "Lesson marked as complete!"});
     } catch (err) {
         console.error(err); 
         res.status(400).json(err);
