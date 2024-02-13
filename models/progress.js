@@ -4,9 +4,13 @@ const Schema = mongoose.Schema;
 
 const progressSchema = new Schema ({
     dateComplete: Date,
-    lesson: [{
+    lesson: {
         type: Schema.Types.ObjectId,
         ref: "Lesson"
+    },
+    user: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }]
 })
 
