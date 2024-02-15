@@ -23,7 +23,7 @@ const Login = async (req, res) => {
         const user = await User.findOne({ email }).populate('progress');
         let matched = await middleware.comparePassword(user.passwordDigest, password);
         if (matched) {
-            let payload = { id: user.id, email: user.email, name: user.name };
+            let payload = { id: user.id, email: user.email, name: user.name, avatar: user.avatar };
             let token = middleware.createToken(payload);
             return res.send({ user, token })
         }
